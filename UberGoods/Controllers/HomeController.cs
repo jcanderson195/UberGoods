@@ -15,7 +15,7 @@ namespace UberGoods.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            //ViewBag.Message = "Your application description page.";
 
             return View();
         }
@@ -24,6 +24,11 @@ namespace UberGoods.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Services()
+        {
             return View();
         }
     }
