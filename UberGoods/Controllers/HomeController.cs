@@ -15,7 +15,7 @@ namespace UberGoods.Controllers
 
         public ActionResult About()
         {
-            //ViewBag.Message = "Your application description page.";
+            
 
             return View();
         }
@@ -28,6 +28,11 @@ namespace UberGoods.Controllers
         }
 
         public ActionResult Services()
+        {
+            return View();
+        }
+
+        public ActionResult Registry()
         {
             return View();
         }
