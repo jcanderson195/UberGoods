@@ -19,10 +19,9 @@
 <body>
     <h1>eBay Search Results</h1>
     <div id="results"></div>
-    <input id="textBox" type="text" />
-    <input type="button" onclick="_cb_findItemsByKeywords()" />
+    <input id="textBox"type="text" />
+    <input type="button"onclick="getUserSearch()" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="Script1.js"></script>
     
     <script>
 
@@ -30,18 +29,29 @@
         function getUserSearch() {
             $.ajax({
                 method: "GET",
-                url: "http://svcs.ebay.com/services/search/FindingService/v1",
-                dataType: "JSON",
+                
+                url: url = "http://svcs.ebay.com/services/search/FindingService/v1"
+             + "?OPERATION-NAME=findItemsByKeywords"
+             + "&SERVICE-VERSION=1.0.0"
+             + "&SECURITY-APPNAME=HuyNgo-UberDeli-PRD-b2f80aceb-c5c69cfb"
+             + "&GLOBAL-ID=EBAY-US"
+             + "&RESPONSE-DATA-FORMAT=JSON"
+             + "&callback=_cb_findItemsByKeywords"
+             + "&REST-PAYLOAD"
+             + "&keywords="+ document.getElementById('textBox').value
+             + "&paginationInput.entriesPerPage=5&responseencoding=JSON",
+                crossDomain: true,
+                dataType: "JSONp",
                 success: function (item) {
                     console.log(item);
                     for (var i = 0; i < items.length; ++i) {
-                        var item = items[i];
-                        var title = item.title;
-                        var pic = item.galleryURL;
-                        var viewitem = item.viewItemURL;
+                        var title = item[i].title;
+                        var pic = item[i].galleryURL;
+                        var viewitem = item[i].viewItemURL;
+                        var price = item[i].CurrentPrice;
                         if (null != title && null != viewitem) {
                             html.push('<tr><td>' + '<img src="' + pic + '" border="0">' + '</td>' +
-                            '<td><a href="' + viewitem + '" target="_blank">' + title + '</a></td></tr>');
+                            '<td><a href="' + viewitem + '" target="_blank">' + title + '</a></td></tr>' + '<tr><td>' + price + '</tr></td>');
                         }
                     
                     }
@@ -125,7 +135,7 @@
         url += "&RESPONSE-DATA-FORMAT=JSON";
         url += "&callback=_cb_findItemsByKeywords";
         url += "&REST-PAYLOAD";
-        url += "&keywords=document.getElementById("textBox").value";
+        url += "&keywords="+ document.getElementById('textBox').value;
         url += "&paginationInput.entriesPerPage=5";
         url += urlfilter;
         s = document.createElement('script'); // create script element
