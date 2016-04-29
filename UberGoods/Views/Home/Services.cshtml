@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "Services";
 }
+
 <head>
     <title>eBay Search Results</title>
     <style type="text/css">
@@ -18,8 +19,41 @@
 <body>
     <h1>eBay Search Results</h1>
     <div id="results"></div>
-
+   
     <script>
+
+        function GetSearchURL(){
+           var searchURL = "http://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=HuyNgo-UberDeli-PRD-b2f80aceb-c5c69cfb&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&callback=getUserSearch&REST-PAYLOAD&keywords=" + document.getElementById("textBox").value + "%203g&paginationInput.entriesPerPage=4";
+            
+            return searchURL;
+        }
+        function getUserSearch()
+        {
+            $.ajax({
+                method: "GET",
+                url: GetSearchURL(),
+                dataType: "JSON",
+                success: function (item) {
+                    console.log(item);
+                    for (var i = 0; i < items.length; ++i) {
+                        var item = items[i];
+                        var title = item.title;
+                        var pic = item.galleryURL;
+                        var viewitem = item.viewItemURL;
+
+                        if (null != title && null != viewitem) {
+                            html.push('<tr><td>' + '<img src="' + pic + '" border="0">' + '</td>' +
+                              '<td><a href="' + viewitem + '" target="_blank">' + title + '</a></td></tr>');
+                        }
+
+                    }
+                },
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+        }
+
 function cb_findItemsByKeywords(root)
 {
     console.log(root);
@@ -46,6 +80,6 @@ function cb_findItemsByKeywords(root)
     </script>
 
 
-    <script src="http://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=HuyNgo-UberDeli-PRD-b2f80aceb-c5c69cfb&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&callback=cb_findItemsByKeywords&REST-PAYLOAD&keywords=soccerball%203g&paginationInput.entriesPerPage=4">
+   <script src="http://svcs.ebay.com/services/search/FindingService/v1?SECURITY-APPNAME=HuyNgo-UberDeli-PRD-b2f80aceb-c5c69cfb&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&RESPONSE-DATA-FORMAT=JSON&callback=cb_findItemsByKeywords&REST-PAYLOAD&keywords=gameboy%203g&paginationInput.entriesPerPage=4">
     </script>
 </body>

@@ -19,7 +19,7 @@ namespace UberGoods.Controllers
 
             return View();
         }
-
+        
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -29,6 +29,10 @@ namespace UberGoods.Controllers
 
         
         public ActionResult Services()
+        {
+            return View();
+        }
+        public ActionResult eBay()
         {
             return View();
         }
