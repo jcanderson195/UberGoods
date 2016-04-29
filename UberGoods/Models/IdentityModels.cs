@@ -20,10 +20,16 @@ namespace UberGoods.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<Customer> Customer { get; set; }
+
+        public DbSet<Driver> Driver { get; set; }
 
         public static ApplicationDbContext Create()
         {

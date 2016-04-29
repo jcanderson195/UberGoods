@@ -15,7 +15,7 @@ namespace UberGoods.Controllers
 
         public ActionResult About()
         {
-            //ViewBag.Message = "Your application description page.";
+            
 
             return View();
         }
@@ -32,7 +32,14 @@ namespace UberGoods.Controllers
         {
             return View();
         }
-        public ActionResult eBay()
+
+        public ActionResult eBay(){
+			return View();
+		}
+
+
+        public ActionResult Registry()
+
         {
             return View();
         }
