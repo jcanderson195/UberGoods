@@ -26,6 +26,8 @@
     <script>
 
         
+        
+
         function getUserSearch() {
             $.ajax({
                 method: "GET",
@@ -45,25 +47,31 @@
                 success: function (item) {
                     console.log(item);
                     for (var i = 0; i < items.length; ++i) {
+                        
                         var title = item[i].title;
                         var pic = item[i].galleryURL;
                         var viewitem = item[i].viewItemURL;
                         var price = item[i].CurrentPrice;
+                        
                         if (null != title && null != viewitem) {
                             html.push('<tr><td>' + '<img src="' + pic + '" border="0">' + '</td>' +
-                            '<td><a href="' + viewitem + '" target="_blank">' + title + '</a></td></tr>' + '<tr><td>' + price + '</tr></td>');
+                            '<td><a href="' + viewitem + '" target="_blank">' + title + '</a></td></tr>');
                         }
                     
                     }
                 }
             });
         }
+         
 
         function _cb_findItemsByKeywords(root) {
+
+            
             var items = root.findItemsByKeywordsResponse[0].searchResult[0].item || [];
             var html = [];
             html.push('<table width="100%" border="0" cellspacing="0" cellpadding="3"><tbody>');
             for (var i = 0; i < items.length; ++i) {
+                
                 var item = items[i];
                 var title = item.title;
                 var pic = item.galleryURL;
@@ -71,7 +79,7 @@
 
                 if (null != title && null != viewitem) {
                     html.push('<tr><td>' + '<img src="' + pic + '" border="0">' + '</td>' +
-                    '<td><a href="' + viewitem + '" target="_blank">' + title + '</a></td></tr>');
+                    '<td><a href="' + viewitem + '" target="_blank">' + title + '</a><input type="submit"/> </td></tr>');
                 }
             }
             html.push('</tbody></table>');
