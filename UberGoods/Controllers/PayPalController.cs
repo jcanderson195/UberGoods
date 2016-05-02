@@ -216,7 +216,7 @@ namespace UberGoods.Controllers
                 Logger.Log(Logger.GetType(), Level.Critical, "Error:", ex); 
             }
 
-            return View("SuccessView");
+            return View("RouteCalculator");
         }
 
         private PayPal.Api.Payment payment;
@@ -288,6 +288,18 @@ namespace UberGoods.Controllers
 
             // Create a payment using a APIContext
             return this.payment.Create(apiContext);
+        }
+
+        public ActionResult RouteCalculator()
+
+        {
+            return View();
+        }
+
+        public ActionResult RouteSubmission()
+
+        {
+            return View();
         }
 
     }
