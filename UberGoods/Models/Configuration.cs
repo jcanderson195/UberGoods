@@ -8,8 +8,7 @@ namespace UberGoods.Models
 {
     public static class Configuration
     {
-            //these variables will store the clientID and clientSecret
-            //by reading them from the web.config
+
             public readonly static string ClientId;
             public readonly static string ClientSecret;
 
@@ -20,7 +19,6 @@ namespace UberGoods.Models
                 ClientSecret = config["clientSecret"];
             }
 
-            // getting properties from the web.config
             public static Dictionary<string, string> GetConfig()
             {
                 return PayPal.Api.ConfigManager.Instance.GetProperties();
@@ -28,7 +26,6 @@ namespace UberGoods.Models
 
             private static string GetAccessToken()
             {
-                // getting accesstocken from paypal                
                 string accessToken = new OAuthTokenCredential
             (ClientId, ClientSecret, GetConfig()).GetAccessToken();
 
@@ -37,7 +34,6 @@ namespace UberGoods.Models
 
             public static APIContext GetAPIContext()
             {
-                // return apicontext object by invoking it with the accesstoken
                 APIContext apiContext = new APIContext(GetAccessToken());
                 apiContext.Config = GetConfig();
                 return apiContext;
