@@ -49,6 +49,8 @@
                         var pic = item[i].galleryURL;
                         var viewitem = item[i].viewItemURL;
                         var price = item[i].CurrentPrice;
+
+
                         if (null != title && null != viewitem) {
                             html.push('<tr><td>' + '<img src="' + pic + '" border="0">' + '</td>' +
                             '<td><a href="' + viewitem + '" target="_blank">' + title + '</a></td></tr>' + '<tr><td>' + price + '</tr></td>');
@@ -68,6 +70,7 @@
                 var title = item.title;
                 var pic = item.galleryURL;
                 var viewitem = item.viewItemURL;
+                var price = item.CurrentPrice;
 
                 if (null != title && null != viewitem) {
                     html.push('<tr><td>' + '<img src="' + pic + '" border="0">' + '</td>' +
