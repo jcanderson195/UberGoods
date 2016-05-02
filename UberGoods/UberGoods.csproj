@@ -313,6 +313,7 @@
     <Content Include="Views\PayPal\Index.cshtml" />
     <Content Include="Views\PayPal\SuccessView.cshtml" />
     <Content Include="Views\PayPal\FailureView.cshtml" />
+    <Content Include="Views\Home\RouteSubmission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
