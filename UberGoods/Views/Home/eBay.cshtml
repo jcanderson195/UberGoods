@@ -20,7 +20,7 @@
     <h1>eBay Search Results</h1>
     <div id="results"></div>
     <input id="textBox"type="text" />
-    <input type="button"onclick="getUserSearch()" />
+    <input type="button"value="Search" onclick="getUserSearch()" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     
     <script>
@@ -71,7 +71,7 @@
 
                 if (null != title && null != viewitem) {
                     html.push('<tr><td>' + '<img src="' + pic + '" border="0">' + '</td>' +
-                    '<td><a href="' + viewitem + '" target="_blank">' + title + '</a></td></tr>');
+                    '<td><a href="' + viewitem + '" target="_blank">' + title + '</a><a href="/PayPal/Index" class="btn btn-primary btn-lg">Buy &raquo;</a></td></tr>');
                 }
             }
             html.push('</tbody></table>');
